@@ -18,17 +18,29 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func maxDepth(root *TreeNode) int {
-	var dfs func(root *TreeNode) int
-	dfs = func(root *TreeNode) int {
-		if root == nil {
-			return 0
-		}
-		return max(dfs(root.Left), dfs(root.Right)) + 1
-	}
-	answer := dfs(root)
-	return answer
+func diameterOfBinaryTree(root *TreeNode) int {
+
 }
+
+//基于遍历计算左右树深度，求最大值，效率极差
+// func diameterOfBinaryTree(root *TreeNode) int {
+// 	max := 0
+// 	var f func(r *TreeNode)
+// 	f = func(root *TreeNode) {
+// 		if root == nil {
+// 			return
+// 		}
+// 		a := maxDepth(root.Left)
+// 		b := maxDepth(root.Right)
+// 		if a+b > max {
+// 			max = a + b
+// 		}
+// 		f(root.Left)
+// 		f(root.Right)
+// 	}
+// 	f(root)
+// 	return max
+// }
 
 // type stack struct {
 // 	arrs   []*TreeNode
