@@ -56,6 +56,24 @@ func inorderTraversal(root *TreeNode) []int {
 	return answer
 }
 
+//先序遍历
+// func inorderTraversal(root *TreeNode) []int {
+// 	answer := []int{}
+// 	s := NewStack()
+// 	s.Push(root)
+// 	for s.length != 0 {
+// 		current := s.Pop()
+// 		answer = append(answer, current.Val)
+// 		if current.Right != nil {
+// 			s.Push(current.Right)
+// 		}
+// 		if current.Left != nil {
+// 			s.Push(current.Left)
+// 		}
+// 	}
+// 	return answer
+// }
+
 //闭包的递归
 // func inorderTraversal(root *TreeNode) []int {
 // 	answer := []int{}
