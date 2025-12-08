@@ -1,9 +1,33 @@
 package main
 
+import "slices"
+
 func main() {
 	exist([][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "ABCCED")
 }
 func exist(board [][]byte, word string) bool {
+	cnt := map[byte]int{}
+	for _, row := range board {
+		for _, c := range row {
+			cnt[c]++
+		}
+	}
+
+	// 优化一
+	w := []byte(word)
+	wordCnt := map[byte]int{}
+	for _, c := range w {
+		wordCnt[c]++
+		if wordCnt[c] > cnt[c] {
+			return false
+		}
+	}
+
+	// 优化二
+	if cnt[w[len(w)-1]] < cnt[w[0]] {
+		slices.Reverse(w)
+	}
+
 	m := make([][]bool, len(board))
 	for i := range m {
 		m[i] = make([]bool, len(board[0]))
